@@ -16,12 +16,11 @@
         <div id="logo_text">
         
           <h1><a href="index.jsp">1<span class="logo_colour">Click Hotel</span></a></h1>
-          <h2>Finding a room never been easier!</h2>
+          <h2>Finding a hotel never been easier!</h2>
         </div>
       </div>
       <div id="menubar">
         <ul id="menu">
-          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
           <li><a href="index.jsp" class="selected">Home</a></li>
           <li><a href="index.jsp">Cars</a></li>
           <li><a href="index.jsp">Bundle Deals</a></li>
@@ -31,6 +30,7 @@
       </div>
     </div>
     <div id="content_header"></div>
+   <a href="https://travis-ci.org/alrafeea/one-click-hotel.svg?branch=master"> <img src="style/passing.svg" /></a>
     <div id="site_content">
       <div id="sidebar_container">
         <div class="sidebar">
@@ -75,7 +75,7 @@
        <form action="search">
 			City: <input type="text" name="city" size="70"/> <br/><br/><br/>
 			Check in: <input type="date" name="from" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			Check out: <input type="text" name="to" /> <br/><br/><br/>
+			Check out: <input type="date" name="to" /> <br/><br/><br/>
 			Minimum Stars:  <select name="minStar">
 			  <option value="1">1</option>
 			  <option value="2">2</option>
