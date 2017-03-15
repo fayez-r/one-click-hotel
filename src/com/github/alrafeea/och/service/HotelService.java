@@ -1,14 +1,18 @@
 package com.github.alrafeea.och.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+import com.github.alrafeea.och.bean.Hotel;
 import com.github.alrafeea.och.bean.SearchInfo;
 import com.github.alrafeea.och.util.JSONParser;
-import org.springframework.stereotype.Service;
 
 /**
  * Search hotels with specific information. Information source is Expedia.
- *  
+ * 
  * @author Fayez Alrafeea
  *
  */
@@ -30,7 +34,7 @@ public class HotelService {
 	 * @param maxStar
 	 * @return list of hotels
 	 */
-	public SearchInfo searchHotels(String city, String from, String to,
+	public List<ResultInfo> searchHotels(String city, String from, String to,
 			String minStar, String maxStar) {
 
 		StringBuilder searchString = new StringBuilder("");
@@ -62,6 +66,30 @@ public class HotelService {
 			e.printStackTrace();
 		}
 
-		return searchInfo;
+		return getHotelsInfo(searchInfo);
+
+	}
+
+	private List<ResultInfo> getHotelsInfo(SearchInfo searchInfo) {
+
+		List<ResultInfo> hotelsInfo = new ArrayList<>();
+
+		for (Hotel hotel : searchInfo.getOffers().getHotels()) {
+
+			ResultInfo resultInfo = new ResultInfo();
+			resultInfo.setAddress(hotel.getHotelInfo().getHotelStreetAddress());
+			resultInfo.setDescription(hotel.getHotelInfo().getDescription());
+			resultInfo.setImageUrl(hotel.getHotelInfo().getHotelImageUrl());
+			resultInfo.setName(hotel.getHotelInfo().getHotelName());
+			resultInfo.setPrice(hotel.getHotelPricingInfo()
+					.getTotalPriceValue());
+			resultInfo.setCurrency(hotel.getHotelPricingInfo().getCurrency());
+			resultInfo.setRate(Double.parseDouble(hotel.getHotelInfo()
+					.getHotelStarRating()));
+
+			hotelsInfo.add(resultInfo);
+		}
+
+		return hotelsInfo;
 	}
 }

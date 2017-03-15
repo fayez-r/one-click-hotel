@@ -74,17 +74,22 @@
       </div>
       <div id="content"><br/><br/>
        
-<c:forEach items="${searchInfo.offers.hotels}" var="hotel"> 
+<c:forEach items="${resultInfo}" var="hotel"> 
 	   <table>
 		  <tr>
-		    <td><h4><a href="#">${hotel.hotelInfo.hotelName}</a></h4><br/>
-		    ${hotel.hotelInfo.hotelStreetAddress}<br/>
-		    <br/>${hotel.hotelInfo.description}<br/></td>
-		    <td><img src="${hotel.hotelInfo.hotelImageUrl}" /> </td>
+		    <td><h4><a href="#">${hotel.name}</a></h4><br/>
+		    <font style="address">${hotel.address}</font><br/>
+		    <br/>${hotel.description}<br/></td>
+		    <td><img src="${hotel.imageUrl}" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		    </tr>
 		    <tr>
-		    <td>Rate: ${hotel.hotelInfo.hotelStarRating} out of 5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
-		    <td>Price /Night: ${hotel.hotelPricingInfo.totalPriceValue} ${hotel.hotelPricingInfo.currency}&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		    <td>
+			<c:forEach var="i" begin="1" end="${hotel.rate}">
+			   <img src="style/star.png" height="20" width="20">
+			</c:forEach>
+			<c:if test="${hotel.rate % 1 != 0}"><img src="style/half-star.png" height="20" width="20"></c:if>
+			 </td>
+		    <td><h2>${hotel.price}</h2> <h5>${hotel.currency}/Night</h5></td>
 		  </tr>
 	</table>
 </c:forEach>
