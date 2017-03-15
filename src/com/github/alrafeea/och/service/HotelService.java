@@ -2,6 +2,8 @@ package com.github.alrafeea.och.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -66,7 +68,10 @@ public class HotelService {
 			e.printStackTrace();
 		}
 
-		return getHotelsInfo(searchInfo);
+		List<ResultInfo> resultInfo = getHotelsInfo(searchInfo);
+		sortByPrice(resultInfo);
+		
+		return resultInfo;
 
 	}
 
@@ -91,5 +96,15 @@ public class HotelService {
 		}
 
 		return hotelsInfo;
+	}
+	
+	private void sortByPrice(List<ResultInfo> hotels){
+		
+		Collections.sort(hotels, new Comparator<ResultInfo>() {
+		    @Override
+		    public int compare(ResultInfo h1, ResultInfo h2) {
+		        return (int) h1.getPrice() - (int) h2.getPrice();
+		    }
+		});
 	}
 }
