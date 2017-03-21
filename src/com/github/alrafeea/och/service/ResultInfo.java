@@ -37,11 +37,26 @@ public class ResultInfo {
 	 * Price per night
 	 */
 	private double price;
-	
+
 	/**
 	 * Hotel pricing currency
 	 */
 	private String currency;
+
+	/**
+	 * City name
+	 */
+	private String city;
+
+	/**
+	 * Travel start date
+	 */
+	private int[] travelStartDate;
+
+	/**
+	 * Travel end date
+	 */
+	private int[] travelEndDate;
 
 	/**
 	 * @return the name
@@ -49,7 +64,7 @@ public class ResultInfo {
 	public String getName() {
 		return name;
 	}
-	
+
 	/**
 	 * @param name
 	 *            the name to set
@@ -141,10 +156,56 @@ public class ResultInfo {
 	}
 
 	/**
-	 * @param currency the currency to set
+	 * @param currency
+	 *            the currency to set
 	 */
 	public void setCurrency(String currency) {
 		this.currency = currency;
+	}
+
+	/**
+	 * @return the city
+	 */
+	public String getCity() {
+		return city;
+	}
+
+	/**
+	 * @param city
+	 *            the city to set
+	 */
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	/**
+	 * @return the travelStartDate
+	 */
+	public int[] getTravelStartDate() {
+		return travelStartDate;
+	}
+
+	/**
+	 * @param travelStartDate
+	 *            the travelStartDate to set
+	 */
+	public void setTravelStartDate(int[] travelStartDate) {
+		this.travelStartDate = travelStartDate;
+	}
+
+	/**
+	 * @return the travelEndDate
+	 */
+	public int[] getTravelEndDate() {
+		return travelEndDate;
+	}
+
+	/**
+	 * @param travelEndDate
+	 *            the travelEndDate to set
+	 */
+	public void setTravelEndDate(int[] travelEndDate) {
+		this.travelEndDate = travelEndDate;
 	}
 
 }

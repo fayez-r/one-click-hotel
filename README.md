@@ -1,8 +1,10 @@
+[![Build Status](https://travis-ci.org/alrafeea/one-click-hotel.svg?branch=master)](https://travis-ci.org/alrafeea/one-click-hotel)
+
 ============
 README
 ============
 
-Requiremens
+Requirements
 -----------------
 1. Java 1.8 installed, for help see https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html
 2. Tomcat 8 installed, for help see https://tomcat.apache.org/tomcat-8.0-doc/setup.html
@@ -32,5 +34,5 @@ Run using App Runner
 Run on Tomcat
 ==============
 1. Copy the war file "one-click-hotel*.war" from the "target" folder to the "webapps" folder inside %TOMCAT_HOME%
-2. Rename war fileinto "one-click-hotel.war"
-3. Start tomcat, the site should be run on "http://localhost:8080/one-click-hotel"
+2. Rename war file into "one-click-hotel.war"
+3. Start Tomcat, the site should be run on "http://localhost:8080/one-click-hotel"

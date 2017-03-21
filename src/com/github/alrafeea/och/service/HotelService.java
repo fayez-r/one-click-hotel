@@ -91,6 +91,9 @@ public class HotelService {
 			resultInfo.setCurrency(hotel.getHotelPricingInfo().getCurrency());
 			resultInfo.setRate(Double.parseDouble(hotel.getHotelInfo()
 					.getHotelStarRating()));
+			resultInfo.setCity(hotel.getHotelInfo().getHotelCity());
+			resultInfo.setTravelStartDate(hotel.getOfferDateRange().getTravelStartDate());
+			resultInfo.setTravelEndDate(hotel.getOfferDateRange().getTravelEndDate());
 
 			hotelsInfo.add(resultInfo);
 		}

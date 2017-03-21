@@ -1,5 +1,7 @@
 package com.github.alrafeea.och.test;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +10,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
-import com.github.alrafeea.och.bean.Hotel;
-import com.github.alrafeea.och.bean.SearchInfo;
 import com.github.alrafeea.och.service.HotelService;
+import com.github.alrafeea.och.service.ResultInfo;
 
 /**
  * Test class for HotelService.
@@ -33,14 +34,14 @@ public class HotelServiceTest {
 	@Test
 	public void testHotelsCount() {
 
-		SearchInfo searchInfo = hs.searchHotels("Seattle", "2017-01-15",
+		List<ResultInfo> searchInfo = hs.searchHotels("Seattle", "2017-01-15",
 				"2017-05-10", "1", "5");
 
 		// assert getting result from Expedia
 		Assert.notNull(searchInfo);
 
 		// assert number of hotels
-		Assert.isTrue(searchInfo.getOffers().getHotels().size() == 50);
+		Assert.isTrue(searchInfo.size() == 50);
 
 	}
 
@@ -50,13 +51,13 @@ public class HotelServiceTest {
 	@Test
 	public void testDestination() {
 
-		SearchInfo searchInfo = hs.searchHotels("Seattle", "2017-01-15",
+		List<ResultInfo> searchInfo = hs.searchHotels("Seattle", "2017-01-15",
 				"2017-05-10", "1", "5");
 
-		for (Hotel hotel : searchInfo.getOffers().getHotels()) {
+		for (ResultInfo hotelInfo : searchInfo) {
 
 			// test city name
-			Assert.isTrue(hotel.getHotelInfo().getHotelCity().equals("Seattle"));
+			Assert.isTrue(hotelInfo.getCity().equals("Seattle"));
 
 		}
 	}
@@ -67,16 +68,13 @@ public class HotelServiceTest {
 	@Test
 	public void testDates() {
 
-		SearchInfo searchInfo = hs.searchHotels("Seattle", "2017-01-15",
+		List<ResultInfo> searchInfo = hs.searchHotels("Seattle", "2017-01-15",
 				"2017-05-10", "1", "5");
 
-		for (Hotel hotel : searchInfo.getOffers().getHotels()) {
+		for (ResultInfo hotelInfo : searchInfo) {
 
-			Assert.isTrue(hotel.getHotelInfo().getHotelCity().equals("Seattle"));
-
-			int[] offerStartDate = hotel.getOfferDateRange()
-					.getTravelStartDate();
-			int[] offerEndDate = hotel.getOfferDateRange().getTravelStartDate();
+			int[] offerStartDate = hotelInfo.getTravelStartDate();
+			int[] offerEndDate = hotelInfo.getTravelEndDate();
 			
 			// test month and year
 			Assert.isTrue((offerStartDate[0] == 2017));
