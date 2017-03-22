@@ -78,6 +78,10 @@ public class HotelService {
 	private List<ResultInfo> getHotelsInfo(SearchInfo searchInfo) {
 
 		List<ResultInfo> hotelsInfo = new ArrayList<>();
+		
+		if(searchInfo.getOffers().getHotels() == null){
+			return hotelsInfo;
+		}
 
 		for (Hotel hotel : searchInfo.getOffers().getHotels()) {
 
